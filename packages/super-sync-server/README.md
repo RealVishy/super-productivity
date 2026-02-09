@@ -32,7 +32,7 @@ The server uses an **Append-Only Log** architecture backed by **PostgreSQL** (vi
 
 ### Docker (Recommended)
 
-The easiest way to run the server is using the provided Docker Compose configuration.
+The easiest way to run the server is using the provided Docker Compose configuration, which builds the image locally from source.
 
 ```bash
 # 1. Copy environment example
@@ -41,9 +41,11 @@ cp .env.example .env
 # 2. Configure .env (Set JWT_SECRET, DOMAIN, POSTGRES_PASSWORD)
 nano .env
 
-# 3. Start the stack (Server + Postgres + Caddy)
-docker-compose up -d
+# 3. Build and start the stack (Server + Postgres + Caddy)
+docker-compose up -d --build
 ```
+
+> **Note:** The `--build` flag builds the server image locally from the repository source code. Re-run with `--build` after pulling new changes to update the image.
 
 ### Manual Setup (Development)
 
